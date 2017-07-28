@@ -43,7 +43,7 @@ firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error
 <pre id='bodyData'>
 </pre>
 <script>
-document.getElementById("bodyData").innerHTML = database;
+document.getElementById("bodyData").innerHTML = database.once('data');
 </script>
 
 </body>
