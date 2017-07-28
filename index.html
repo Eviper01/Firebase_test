@@ -44,7 +44,7 @@ firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error
 </pre>
 <script>
 refBase = database.ref().child('object');
-refBase.on('value' , snap => data = snap.val());
+refBase.on('value' , snap => var data = snap.val());
 console.log(data);
 //document.getElementById("bodyData").innerHTML
 </script>
