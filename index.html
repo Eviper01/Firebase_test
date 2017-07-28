@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+
+<html>
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-messaging.js"></script>
+<!-- Leave out Storage -->
+<!-- <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-storage.js"></script> -->
+
+
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCPZUB3Nb-CSBkGVM5kF8wvVnU1EFwfuQg",
+    authDomain: "test-data-9865f.firebaseapp.com",
+    databaseURL: "https://test-data-9865f.firebaseio.com",
+    projectId: "test-data-9865f",
+    storageBucket: "test-data-9865f.appspot.com",
+    messagingSenderId: "962467111816"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<script>
+var email = "eviper01@gmail.com"
+var password = "password"
+firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // ...
+});
+</script>
+
+</html>
