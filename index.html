@@ -27,30 +27,52 @@
 
 </script>
 
-<script>
-var email = "eviper01@gmail.com"
-var password = "password"
-firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  // ...
-});
-</script>
+
 
 <body>
 <title>Test Data</title>
 <h1 id="heading">Test Data</h1>
 <pre id='bodyData'>
 </pre>
+<div class="container">
+  <input id="txtEmail" type="email" placeholder="Email">
+  <input id="txtPassword" type="password" placeholder="Password">
+  <button id="btnLogin" class="btn btn-action">Log in</button>
+  <button id="btnSignUp" class="btn btn-secondary">Sign Up</button>
+  <button id="btnLogout" class="btn btn-action hide">Logout</button>
+</div>
+
 <script>
 var element = document.getElementById("heading");
-var data = null;
 refBase = database.ref().child('object');
 refBase.on('value' , snap => element.innerText = snap.val());
-console.log(data);
-//document.getElementById("bodyData").innerHTML;
 </script>
+
+
+<script>
+
+const txtEmail = document.getElementById('txtEmail');
+const txtPassword = document.getElementById('txtPassword');
+const btnLogin = document.getElementById('btnLogin');
+const btnSignUp = document.getElementById('btnSignUp');
+const btnLogout = document.getElementById('btnLogout');
+
+//button event listners
+
+btnLogin.addEventListner('click', e => {
+const email = txtEmail.value;
+const pass = txtPassword.value;
+const promise = database.auth().signInWithEmailAndPassword(email,pass);
+promise.catch(e => console.log(e.message));
+
+
+});
+
+
+
+
+</script>
+
 
 </body>
 
