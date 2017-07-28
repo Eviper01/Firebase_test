@@ -40,14 +40,16 @@ firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error
 
 <body>
 <title>Test Data</title>
+<h1 id="heading">Test Data</h1>
 <pre id='bodyData'>
 </pre>
 <script>
+var element = document.getElementById("heading");
 var data = null;
 refBase = database.ref().child('object');
-refBase.on('value' , snap => data = snap.val());
+refBase.on('value' , snap => element.innerText = snap.val());
 console.log(data);
-//document.getElementById("bodyData").innerHTML
+//document.getElementById("bodyData").innerHTML;
 </script>
 
 </body>
