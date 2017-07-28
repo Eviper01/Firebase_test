@@ -59,7 +59,7 @@ const btnLogout = document.getElementById('btnLogout');
 
 //button event listners
 
-btnLogin.addEventListner('click', e => {
+btnLogin.addEventListener('click', e => {
 const email = txtEmail.value;
 const pass = txtPassword.value;
 const promise = database.auth().signInWithEmailAndPassword(email,pass);
