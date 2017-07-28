@@ -22,6 +22,9 @@
     messagingSenderId: "962467111816"
   };
   firebase.initializeApp(config);
+
+  var database = firebase.database();
+
 </script>
 
 <script>
@@ -34,5 +37,18 @@ firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error
   // ...
 });
 </script>
+
+<body>
+<title>Test Data</title>
+<pre id='bodyData'>
+</pre>
+<script>
+while true {
+document.getElementById("bodyData").innerHTML = database;
+
+}
+</script>
+
+</body>
 
 </html>
