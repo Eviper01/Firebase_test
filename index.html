@@ -22,14 +22,15 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-database.js"></script>
     
 
-    
+ <!--<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>--> 
 </head>    
     
-<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
-<script src="firebase_control.js"></script>
+
 <script>
   // Initialize Firebase
   var config = {
@@ -93,12 +94,11 @@ const btnLogout = document.getElementById('btnLogout');
 //button event listners
 
 btnLogin.addEventListener('click', e => {
+console.log("sucess");    
 const email = txtEmail.value;
 const pass = txtPassword.value;
 const promise = firebase.auth().signInWithEmailAndPassword(email,pass);
 promise.catch(e => console.log(e.message));
-
-
 });
 
 btnSignUp.addEventListener('click', e => {
@@ -106,8 +106,6 @@ const email = txtEmail.value;
 const pass = txtPassword.value;
 const promise = firebase.auth().createUserWithEmailAndPassword(email,pass);
 promise.catch(e => console.log(e.message));
-
-
 });
 
 btnLogout.addEventListener('click', e => {
