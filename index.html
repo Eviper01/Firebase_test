@@ -71,13 +71,16 @@
 
     
     
-<p id="data"></p>    
-    
+<div class="container">
+    <pre id="data"></pre>
+    </div>    
         
 <script>
+//Reading data from database to webpage    
+    
 var element = document.getElementById("data");
 refBase = database.ref().child('object');
-refBase.on('value' , snap => element.innerText = snap.val());
+refBase.on('value' , snap => element.innerText = JSON.stringify(snap.val(),null,3));
 </script>
 
 
@@ -96,6 +99,7 @@ console.log("sucess");
 const email = txtEmail.value;
 const pass = txtPassword.value;
 const promise = firebase.auth().signInWithEmailAndPassword(email,pass);
+console.log(promise.uid);
 promise.catch(e => console.log(e.message));
 });
 
@@ -118,7 +122,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
     console.log(firebaseUser);
     btnLogout.classList.remove('hide');
   } else {
-    console.log("LoggedOut");
+    console.log("Logged Out");
    btnLogout.classList.add('hide');
   }
 })
