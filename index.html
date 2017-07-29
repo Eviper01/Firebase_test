@@ -68,7 +68,14 @@
     
 <div class="container hide" id="database">
     <pre id="data"></pre>
-    </div>    
+    <input id="txtKey" type="text" class="form-control" placeholder="key">
+    <input id="txtValue" type="text" class="form-control" placeholder="value">
+    <button id="btnAdd" class="btn btn-primary">Add Data</button>
+    <button id="btnDel" class="btn btn-danger">Delete Key</button>
+    </div>
+    
+    
+
         
 
 
@@ -80,7 +87,13 @@ const txtPassword = document.getElementById('txtPassword');
 const btnLogin = document.getElementById('btnLogin');
 const btnSignUp = document.getElementById('btnSignUp');
 const btnLogout = document.getElementById('btnLogout');
+    
 const divDatabase = document.getElementById('database');
+
+const txtKey = document.getElementById('txtKey');
+const txtValue = document.getElementById('txtValue');
+const btnAdd = document.getElementById('btnAdd');
+const btnDel = document.getElementById('btnDel');
     
 var User = document.getElementById('User');
     
@@ -88,10 +101,10 @@ var User = document.getElementById('User');
     
 function writeData(key,value) {
     var keyData = {
-        key : values };
+         [key] : value };
 
     
-    refBase.update(keyData);
+    database.ref().child('users').child(firebase.auth().currentUser.uid).update(keyData);
     
     
 };
@@ -117,7 +130,18 @@ promise.catch(e => console.log(e.message));
 
 btnLogout.addEventListener('click', e => {
   firebase.auth().signOut();
-})
+});
+    
+btnAdd.addEventListener('click', e => {
+    const key = txtKey.value;
+    const value = txtValue.value;
+    writeData(key,value);
+});
+
+btnDel.addEventListener('click', e=> {
+    const key = txtKey.value;
+     database.ref().child('users').child(firebase.auth().currentUser.uid).remove(keyData);
+                        });
 
 
 // Login Listener
@@ -150,10 +174,6 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
 
 
-</script>
-
-    
-<script>
 //Reading data from database to webpage    
     
 var element = document.getElementById("data");
