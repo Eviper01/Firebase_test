@@ -83,6 +83,19 @@ const btnLogout = document.getElementById('btnLogout');
 const divDatabase = document.getElementById('database');
     
 var User = document.getElementById('User');
+    
+//functions
+    
+function writeData(key,value) {
+    var keyData = {
+        key : values };
+
+    
+    refBase.update(keyData);
+    
+    
+};
+    
 
 //button event listners
 
@@ -119,6 +132,8 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
       btnLogin.classList.add('hide');
       btnSignUp.classList.add('hide');
     User.innerText = firebaseUser.email;
+      refBase = database.ref().child('users').child(firebase.auth().currentUser.uid);
+      refBase.on('value' , snap => element.innerText = JSON.stringify(snap.val(),null,3));
     
   } else {
     console.log("Logged Out");
@@ -142,8 +157,6 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 //Reading data from database to webpage    
     
 var element = document.getElementById("data");
-refBase = database.ref().child('users').child(firebase.auth().currentUser.uid);
-refBase.on('value' , snap => element.innerText = JSON.stringify(snap.val(),null,3));
 </script>    
     
 
