@@ -140,7 +140,8 @@ btnAdd.addEventListener('click', e => {
 
 btnDel.addEventListener('click', e=> {
     const key = txtKey.value;
-     database.ref().child('users').child(firebase.auth().currentUser.uid).remove(keyData);
+    const value = null;
+    writeData(key,value);
                         });
 
 
