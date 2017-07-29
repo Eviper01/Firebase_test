@@ -1,16 +1,35 @@
 <!DOCTYPE html>
 
 
-<html>
-<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-database.js"></script>
-<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-messaging.js"></script>
-<!-- Leave out Storage -->
-<!-- <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-storage.js"></script> -->
+<html lang="en">
+ <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">     
+     
+<!--jQeury-->    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>     
+    
+<!--//Bootsrap\\--> 
+    
+ <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 
+    
+
+    
+</head>    
+    
 <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+<script src="firebase_control.js"></script>
 <script>
   // Initialize Firebase
   var config = {
@@ -31,19 +50,33 @@
 
 <body>
 <title>Test Data</title>
-<h1 id="heading">Test Data</h1>
-<pre id='bodyData'>
-</pre>
+    
+    
+    
+<h1>Test Data</h1>
+    
+    
 <div class="container">
-  <input id="txtEmail" type="email" placeholder="Email">
-  <input id="txtPassword" type="password" placeholder="Password">
-  <button id="btnLogin" class="btn btn-action">Log in</button>
-  <button id="btnSignUp" class="btn btn-secondary">Sign Up</button>
-  <button id="btnLogout" class="btn btn-action hide">Logout</button>
+    <form class="form-signin">
+    <h2 class="form-signin-heading">Please sign in</h2>
+    
+  <input id="txtEmail" type="email" class="form-control" placeholder="Email">
+  <input id="txtPassword" type="password" class="form-control" placeholder="Password">
+  <button id="btnLogin" class="btn btn-primary">Log in</button>
+  <button id="btnSignUp" class="btn btn-default">Sign Up</button>
+  <button id="btnLogout" class="btn btn-danger hide">Logout</button>
+    </form>
 </div>
 
+    
+
+    
+    
+<p id="data"></p>    
+    
+        
 <script>
-var element = document.getElementById("heading");
+var element = document.getElementById("data");
 refBase = database.ref().child('object');
 refBase.on('value' , snap => element.innerText = snap.val());
 </script>
@@ -89,8 +122,8 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
     console.log(firebaseUser);
     btnLogout.classList.remove('hide');
   } else {
-    console.log("not logged in");
-    btnLogout.classList.add('hide');
+    console.log("LoggedOut");
+   btnLogout.classList.add('hide');
   }
 })
 
