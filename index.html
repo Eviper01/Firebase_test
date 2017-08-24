@@ -126,7 +126,7 @@ function writeData(key,value) {
 $("#ex8").slider({tooltip: 'never'});
 $("#ex8").on("slide", function(slideEvt) {
 	writeData("input",slideEvt.value);
-    $("in").innerText("Set at: " + slideEvt.value + "C");
+    $("in").text("Set at: " + slideEvt.value + "C");
 });
 
 //button event listners
