@@ -80,7 +80,7 @@
    <!-- <input id="txtKey" type="text" class="form-control" placeholder="key">
     <input id="txtValue" type="text" class="form-control" placeholder="value">-->
     <input id="ex8" data-slider-id='ex1Slider' type="text" data-slider-min="15" data-slider-max="35" data-slider-step="1" data-slider-value="20"/>
-    <h1 id="in" class="display-3">0C</h1>
+    <h1 id="in" class="display-3">Set at: 0C</h1>
 
    <!-- <button id="btnAdd" class="btn btn-primary">Add Data</button>
     <button id="btnDel" class="btn btn-danger">Delete Data</button> -->
@@ -126,6 +126,7 @@ function writeData(key,value) {
 $("#ex8").slider({tooltip: 'always'});
 $("#ex8").on("slide", function(slideEvt) {
 	writeData("input",slideEvt.value);
+    $("in").text("Set at: " + slideEvt.value + "C");
 });
 
 //button event listners
@@ -177,7 +178,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
     User.innerText = firebaseUser.email;
       refBase = database.ref().child('users').child(firebase.auth().currentUser.uid);
      // refBase.on('value' , snap => element.innerText = JSON.stringify(snap.val(),null,3));
-      refBase.child('out').on('value' , snap => element2.innerText = JSON.stringify(snap.val().out,null,3));
+      refBase.child('out').on('value' , snap => element2.innerText = "Current temp" + JSON.stringify(snap.out,null,3)+"C");
     
   } else {
     console.log("Logged Out");
