@@ -178,7 +178,9 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
     User.innerText = firebaseUser.email;
       refBase = database.ref().child('users').child(firebase.auth().currentUser.uid);
      // refBase.on('value' , snap => element.innerText = JSON.stringify(snap.val(),null,3));
-      refBase.child('out').on('value' , snap => element2.innerText = "Current temp: " + JSON.stringify(snap.out,null,3)+"C");
+      refBase.child('out').on('value' , function (snap) { 
+        element2.innerText = "Current temp: " + snap.out +"C";
+        console.log(snap.val())});
     
   } else {
     console.log("Logged Out");
