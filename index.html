@@ -179,7 +179,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
       refBase = database.ref().child('users').child(firebase.auth().currentUser.uid);
      // refBase.on('value' , snap => element.innerText = JSON.stringify(snap.val(),null,3));
       refBase.child('out').on('value' , function (snap) { 
-        element2.innerText = "Current temp: " + snap.out +"C";
+        element2.innerText = "Current temp: " + String(snap.val()) +"C";
         console.log(snap.val())});
     
   } else {
