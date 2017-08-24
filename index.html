@@ -118,9 +118,11 @@ function writeData(key,value) {
 };
 //Listners
     
-$("#ex8").slider({
-	tooltip: 'show'
-});    
+// With JQuery
+$("#ex8").slider();
+$("#ex8").on("slide", function(slideEvt) {
+	writeData("input",slideEvt.value);
+});
 
 //button event listners
 
