@@ -75,9 +75,13 @@
     
 <div class="container hide" id="database">
     <pre id="data"></pre>
+    <h1 id="out" class="display-3">0C</h1>
+
    <!-- <input id="txtKey" type="text" class="form-control" placeholder="key">
     <input id="txtValue" type="text" class="form-control" placeholder="value">-->
     <input id="ex8" data-slider-id='ex1Slider' type="text" data-slider-min="15" data-slider-max="35" data-slider-step="1" data-slider-value="20"/>
+    <h1 id="in" class="display-3">0C</h1>
+
    <!-- <button id="btnAdd" class="btn btn-primary">Add Data</button>
     <button id="btnDel" class="btn btn-danger">Delete Data</button> -->
     </div>
@@ -119,7 +123,7 @@ function writeData(key,value) {
 //Listners
     
 // With JQuery
-$("#ex8").slider();
+$("#ex8").slider({tooltip: 'always'});
 $("#ex8").on("slide", function(slideEvt) {
 	writeData("input",slideEvt.value);
 });
@@ -172,7 +176,8 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
       btnSignUp.classList.add('hide');
     User.innerText = firebaseUser.email;
       refBase = database.ref().child('users').child(firebase.auth().currentUser.uid);
-      refBase.on('value' , snap => element.innerText = JSON.stringify(snap.val(),null,3));
+     // refBase.on('value' , snap => element.innerText = JSON.stringify(snap.val(),null,3));
+      refBase.child('out').on('value' , snap => element2.innerText = JSON.stringify(snap.val().out,null,3));
     
   } else {
     console.log("Logged Out");
@@ -190,8 +195,8 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
 
 //Reading data from database to webpage    
-    
-var element = document.getElementById("data");
+var element2 = document.getElementById('out');    
+// var element = document.getElementById("data");
 </script>    
     
 
