@@ -75,7 +75,7 @@
     
 <div class="container hide" id="database">
     <pre id="data"></pre>
-    <h1 id="out" class="display-3">0C</h1>
+    <h1 id="out" class="display-3">Current temp: 0C</h1>
 
    <!-- <input id="txtKey" type="text" class="form-control" placeholder="key">
     <input id="txtValue" type="text" class="form-control" placeholder="value">-->
@@ -178,7 +178,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
     User.innerText = firebaseUser.email;
       refBase = database.ref().child('users').child(firebase.auth().currentUser.uid);
      // refBase.on('value' , snap => element.innerText = JSON.stringify(snap.val(),null,3));
-      refBase.child('out').on('value' , snap => element2.innerText = "Current temp" + JSON.stringify(snap.out,null,3)+"C");
+      refBase.child('out').on('value' , snap => element2.innerText = "Current temp: " + JSON.stringify(snap.out,null,3)+"C");
     
   } else {
     console.log("Logged Out");
