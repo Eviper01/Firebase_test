@@ -22,8 +22,7 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-    <!-- Bootstrap Form Helpers -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-formhelpers/2.3.0/css/bootstrap-formhelpers.min.css" rel="stylesheet" media="screen">
+
      
 <!--//Firebase\\-->  
 <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-app.js"></script>
@@ -75,7 +74,7 @@
     <pre id="data"></pre>
     <input id="txtKey" type="text" class="form-control" placeholder="key">
     <input id="txtValue" type="text" class="form-control" placeholder="value">
-    <div class="bfh-slider" data-name="slider1"></div>
+    <input id="ex8" data-slider-id='ex1Slider' type="text" data-slider-min="15" data-slider-max="35" data-slider-step="1" data-slider-value="20"/>
     <button id="btnAdd" class="btn btn-primary">Add Data</button>
     <button id="btnDel" class="btn btn-danger">Delete Data</button>
     </div>
@@ -87,7 +86,7 @@
 
 
 <script>
-
+//UI
 const txtEmail = document.getElementById('txtEmail');
 const txtPassword = document.getElementById('txtPassword');
 const btnLogin = document.getElementById('btnLogin');
@@ -114,7 +113,11 @@ function writeData(key,value) {
     
     
 };
+//Listners
     
+$("#ex8").slider({
+	tooltip: 'always'
+});    
 
 //button event listners
 
