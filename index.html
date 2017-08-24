@@ -143,7 +143,7 @@ promise.catch(e => console.log(e.message));
 btnLogout.addEventListener('click', e => {
   firebase.auth().signOut();
 });
-    
+/*    
 btnAdd.addEventListener('click', e => {
     const key = txtKey.value;
     const value = txtValue.value;
@@ -156,7 +156,7 @@ btnDel.addEventListener('click', e=> {
     writeData(key,value);
                         });
 
-
+*/
 // Login Listener
 
 firebase.auth().onAuthStateChanged(firebaseUser => {
