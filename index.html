@@ -126,7 +126,7 @@ function writeData(key,value) {
 $("#ex8").slider({tooltip: 'never'});
 $("#ex8").on("slide", function(slideEvt) {
 	writeData("input",slideEvt.value);
-    $("in").text("Set at: " + slideEvt.value + "C");
+    element.innerText = "Set at: " + String(slideEvt.value) + "C";
 });
 
 //button event listners
@@ -198,7 +198,8 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
 
 //Reading data from database to webpage    
-var element2 = document.getElementById('out');    
+var element2 = document.getElementById('out');
+var element = document.getElementById('in')
 // var element = document.getElementById("data");
 </script>    
     
